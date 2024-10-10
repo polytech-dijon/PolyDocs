@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app: 
+    container_name: polydocs-front
+    image: node:20-alpine
+    working_dir: /app
+    ports:
+      - 5173:3000
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: sh -c "npm install && npm run dev"
+    network_mode: host
+
+volumes:
+  node_modules:
